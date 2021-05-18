@@ -1,4 +1,4 @@
-package com.example.rest.utils;
+package com.example.rest.util;
 
 import java.util.UUID;
 

@@ -1,12 +1,9 @@
 package com.example.rest.resource;
 
 import com.example.rest.annotation.RequestDTO;
-import com.example.rest.dto.AddressDTO;
 import com.example.rest.dto.StudentDTO;
-import com.example.rest.entity.Address;
 import com.example.rest.entity.Student;
 import com.example.rest.repository.StudentRepository;
-import com.example.rest.service.AddressService;
 import com.example.rest.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,13 +19,11 @@ import java.util.List;
 public class StudentResource {
 
     private StudentService studentService;
-    private AddressService addressService;
     private StudentRepository studentRepository;
 
     @Autowired
-    public StudentResource(StudentService studentService, AddressService addressService, StudentRepository studentRepository) {
+    public StudentResource(StudentService studentService, StudentRepository studentRepository) {
         this.studentService = studentService;
-        this.addressService = addressService;
         this.studentRepository = studentRepository;
     }
 
@@ -55,12 +50,6 @@ public class StudentResource {
     @ResponseStatus(HttpStatus.OK)
     public StudentDTO update(@PathVariable String id, @Valid @RequestDTO(StudentDTO.class) Student student) {
         return StudentDTO.getInstance(this.studentService.update(id, student));
-    }
-
-    @PatchMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public AddressDTO updateAddress(@PathVariable String id, @Valid @RequestDTO(AddressDTO.class) Address address) {
-        return AddressDTO.getInstance(this.addressService.update(id, address));
     }
 
     @DeleteMapping("/{id}")

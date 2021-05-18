@@ -3,8 +3,10 @@ package com.example.rest.dto;
 import com.example.rest.entity.Student;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -18,28 +20,28 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class StudentDTO {
+public class StudentDTO extends RepresentationModel<StudentDTO> {
 
     public interface CreateStudentGroup {
     }
 
     private String id;
 
-    @NotNull
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.name}")
     private String name;
 
-    @NotEmpty
+    @Email
+    @NotEmpty(message = "{NotEmpty.email}")
     private String email;
 
-    @NotEmpty(groups = CreateStudentGroup.class)
+    @NotEmpty(message = "{NotEmpty.password}", groups = CreateStudentGroup.class)
     private String password;
 
-    @NotNull
+    @NotNull(message = "{NotNull.birthday}")
     private LocalDate birthday;
 
     @Valid
-    @NotNull
+    @NotNull(message = "{NotNull.address}")
     private AddressDTO address;
 
     public static StudentDTO getInstance(Student student) {
