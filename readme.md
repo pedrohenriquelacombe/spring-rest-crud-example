@@ -3,7 +3,6 @@ This project is an implementation of a basic CRUD using RESTful principles.
 
 ## About
 The main goal of this project is to serve as a **basis to start the development of a new REST API**.
-This application uses some concepts like:
 
 ## Technologies
 - [Spring Boot](https://spring.io/projects/spring-boot)
@@ -18,6 +17,10 @@ This application uses some concepts like:
  - DTO (Data Transfer Object) principles
  - Automaticaly converter DTO to Entity
  - Custom Exception Handler messages
+
+## Built With
+- [Spring Initializr](https://start.spring.io/)
+- [Maven](https://maven.apache.org/index.html)
 
 ## How can i test my endpoints?
 For tests cases, you can check the API endpoints with Postman.
