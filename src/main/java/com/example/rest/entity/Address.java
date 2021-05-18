@@ -1,6 +1,6 @@
 package com.example.rest.entity;
 
-import com.example.rest.utils.StringUtils;
+import com.example.rest.util.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
 

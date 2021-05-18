@@ -16,24 +16,24 @@ public class AddressDTO {
 
     private String id;
 
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.street}")
     private String street;
 
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.number}")
     private String number;
 
     private String complement;
 
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.district}")
     private String district;
 
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.city}")
     private String city;
 
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.state}")
     private String state;
 
-    @NotEmpty
+    @NotEmpty(message = "{NotEmpty.country}")
     private String country;
 
     public static AddressDTO getInstance(Address address) {

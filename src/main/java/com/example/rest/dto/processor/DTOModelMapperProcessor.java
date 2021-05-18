@@ -1,4 +1,4 @@
-package com.example.rest.processor;
+package com.example.rest.dto.processor;
 
 import com.example.rest.annotation.RequestDTO;
 import org.modelmapper.ModelMapper;
@@ -8,7 +8,6 @@ import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.ModelAndViewContainer;
@@ -31,11 +30,6 @@ public class DTOModelMapperProcessor extends RequestResponseBodyMethodProcessor 
     public boolean supportsParameter(MethodParameter parameter) {
         return parameter.hasParameterAnnotation(RequestDTO.class);
     }
-
-//    @Override
-//    protected void validateIfApplicable(WebDataBinder binder, MethodParameter parameter) {
-//        binder.validate();
-//    }
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
