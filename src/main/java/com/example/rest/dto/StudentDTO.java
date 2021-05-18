@@ -2,7 +2,6 @@ package com.example.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
-import org.springframework.hateoas.RepresentationModel;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class StudentDTO extends RepresentationModel<StudentDTO> {
+public class StudentDTO {
 
     public interface CreateStudentGroup {
     }
