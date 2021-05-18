@@ -18,6 +18,9 @@ public class Address implements Serializable {
     @Id
     private String id;
 
+    @Column(name = "zip_code")
+    private String zipCode;
+
     @Column
     private String street;
 
