@@ -1,6 +1,5 @@
 package com.example.rest.dto;
 
-import com.example.rest.entity.Address;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -15,6 +14,9 @@ import javax.validation.constraints.NotEmpty;
 public class AddressDTO {
 
     private String id;
+
+    @NotEmpty(message = "{NotEmpty.zipCode}")
+    private String zipCode;
 
     @NotEmpty(message = "{NotEmpty.street}")
     private String street;
@@ -35,18 +37,5 @@ public class AddressDTO {
 
     @NotEmpty(message = "{NotEmpty.country}")
     private String country;
-
-    public static AddressDTO getInstance(Address address) {
-        return AddressDTO.builder()
-                .id(address.getId())
-                .street(address.getStreet())
-                .number(address.getNumber())
-                .complement(address.getComplement())
-                .district(address.getDistrict())
-                .city(address.getCity())
-                .state(address.getState())
-                .country(address.getCountry())
-                .build();
-    }
 
 }

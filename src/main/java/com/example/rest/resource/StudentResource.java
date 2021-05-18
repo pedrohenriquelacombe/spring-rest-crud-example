@@ -2,6 +2,7 @@ package com.example.rest.resource;
 
 import com.example.rest.annotation.RequestDTO;
 import com.example.rest.dto.StudentDTO;
+import com.example.rest.dto.mapper.StudentMapper;
 import com.example.rest.entity.Student;
 import com.example.rest.repository.StudentRepository;
 import com.example.rest.service.StudentService;
@@ -30,26 +31,26 @@ public class StudentResource {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<StudentDTO> students() {
-        return StudentDTO.getInstance(this.studentRepository.findAll());
+        return StudentMapper.getInstance(this.studentRepository.findAll());
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public StudentDTO search(@PathVariable String id) {
-        StudentDTO studentDTO = StudentDTO.getInstance(this.studentRepository.findById(id).orElseThrow());
+        StudentDTO studentDTO = StudentMapper.getInstance(this.studentRepository.findById(id).orElseThrow());
         return studentDTO;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public StudentDTO create(@Validated(value = {Default.class, StudentDTO.CreateStudentGroup.class}) @RequestDTO(StudentDTO.class) Student student) {
-        return StudentDTO.getInstance(this.studentService.save(student));
+        return StudentMapper.getInstance(this.studentService.save(student));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public StudentDTO update(@PathVariable String id, @Valid @RequestDTO(StudentDTO.class) Student student) {
-        return StudentDTO.getInstance(this.studentService.update(id, student));
+        return StudentMapper.getInstance(this.studentService.update(id, student));
     }
 
     @DeleteMapping("/{id}")
