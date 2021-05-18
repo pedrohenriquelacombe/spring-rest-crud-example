@@ -23,6 +23,13 @@ The main goal of this project is to serve as a **basis to start the development 
 - [Maven](https://maven.apache.org/index.html)
 
 ## How can i test my endpoints?
+First, open your preference code editor and run the following code below:
+```
+mvn clean install
+```
+
+After the maven downloaded all dependencies, run the SpringRestTemplateApplication.class.
+
 For tests cases, you can check the API endpoints with Postman.
 
 - [Postman Collection](https://www.getpostman.com/collections/f4ee24c26c1c6eea14de)
