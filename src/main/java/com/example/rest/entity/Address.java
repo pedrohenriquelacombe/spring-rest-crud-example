@@ -1,18 +1,19 @@
 package com.example.rest.entity;
 
-import com.example.rest.util.StringUtils;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "address")
+@EqualsAndHashCode(of = {"id"})
 public class Address implements Serializable {
 
     @Id
@@ -46,8 +47,8 @@ public class Address implements Serializable {
     @JoinColumn(name = "fk_user")
     private Student student;
 
-    @Column(name = "saved_at")
-    private LocalDateTime savedAt;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
@@ -59,21 +60,8 @@ public class Address implements Serializable {
 
     @PrePersist
     private void prePersist() {
-        this.id = StringUtils.uuid();
-        this.savedAt = LocalDateTime.now();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return Objects.equals(id, address.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+        this.id = UUID.randomUUID().toString();
+        this.createdAt = LocalDateTime.now();
     }
 
 }
