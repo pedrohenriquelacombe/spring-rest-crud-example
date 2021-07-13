@@ -3,22 +3,21 @@ package com.example.rest.service;
 import com.example.rest.entity.Student;
 import com.example.rest.repository.AddressRepository;
 import com.example.rest.repository.StudentRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class StudentService {
 
     private StudentRepository studentRepository;
     private AddressRepository addressRepository;
 
-    @Autowired
-    public StudentService(StudentRepository studentRepository, AddressRepository addressRepository) {
-        this.studentRepository = studentRepository;
-        this.addressRepository = addressRepository;
+    public Student findById(String id) {
+        return this.studentRepository.findById(id).orElseThrow();
     }
 
     public Student save(Student student) {
@@ -28,13 +27,13 @@ public class StudentService {
     }
 
     public Student update(String id, Student student) {
-        Student aux = this.studentRepository.findById(id).orElseThrow();
-        BeanUtils.copyProperties(student, aux, "id", "savedAt", "updatedAt", "address");
+        Student aux = this.findById(id);
+        BeanUtils.copyProperties(student, aux, "id", "createdAt", "updatedAt", "address");
 
         this.studentRepository.save(aux);
 
         Optional.ofNullable(student.getAddress()).ifPresent(address -> {
-            BeanUtils.copyProperties(student.getAddress(), aux.getAddress(), "id", "savedAt", "updatedAt", "student");
+            BeanUtils.copyProperties(student.getAddress(), aux.getAddress(), "id", "createdAt", "updatedAt", "student");
             this.addressRepository.save(aux.getAddress());
         });
 
@@ -42,8 +41,7 @@ public class StudentService {
     }
 
     public void deleteById(String id) {
-        Student student = this.studentRepository.findById(id).orElseThrow();
-        this.studentRepository.delete(student);
+        this.studentRepository.delete(this.findById(id));
     }
 
 }

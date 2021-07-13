@@ -1,7 +1,6 @@
 package com.example.rest.dto.mapper;
 
-import com.example.rest.api.ViaCepAPI;
-import com.example.rest.dto.AddressDTO;
+import com.example.rest.dto.response.AddressResponseDTO;
 import com.example.rest.entity.Address;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -9,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AddressMapper {
 
-    public static AddressDTO getInstance(Address address) {
-        return AddressDTO.builder()
+    public static AddressResponseDTO getInstance(Address address) {
+        return AddressResponseDTO.builder()
                 .id(address.getId())
                 .zipCode(address.getZipCode())
                 .street(address.getStreet())
@@ -20,17 +19,6 @@ public final class AddressMapper {
                 .city(address.getCity())
                 .state(address.getState())
                 .country(address.getCountry())
-                .build();
-    }
-
-    public static AddressDTO getInstance(ViaCepAPI.ViaCepAddress address) {
-        return AddressDTO.builder()
-                .zipCode(address.getCep())
-                .street(address.getLogradouro())
-                .complement(address.getComplemento())
-                .district(address.getBairro())
-                .city(address.getLocalidade())
-                .state(address.getUf())
                 .build();
     }
 

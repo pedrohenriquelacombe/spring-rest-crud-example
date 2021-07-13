@@ -1,6 +1,5 @@
-package com.example.rest.dto;
+package com.example.rest.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -10,10 +9,7 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class AddressDTO {
-
-    private String id;
+public class AddressRequestDTO {
 
     @NotEmpty(message = "{NotEmpty.zipCode}")
     private String zipCode;

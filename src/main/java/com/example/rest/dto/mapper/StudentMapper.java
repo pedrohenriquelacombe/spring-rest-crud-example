@@ -1,6 +1,6 @@
 package com.example.rest.dto.mapper;
 
-import com.example.rest.dto.StudentDTO;
+import com.example.rest.dto.response.StudentResponseDTO;
 import com.example.rest.entity.Student;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class StudentMapper {
 
-    public static StudentDTO getInstance(Student student) {
-        StudentDTO dto = StudentDTO.builder()
+    public static StudentResponseDTO getInstance(Student student) {
+        StudentResponseDTO dto = StudentResponseDTO.builder()
                 .id(student.getId())
                 .name(student.getName())
                 .email(student.getEmail())
@@ -27,7 +27,7 @@ public final class StudentMapper {
         return dto;
     }
 
-    public static List<StudentDTO> getInstance(List<Student> students) {
+    public static List<StudentResponseDTO> getInstance(List<Student> students) {
         return students.stream().map(StudentMapper::getInstance).collect(Collectors.toList());
     }
 

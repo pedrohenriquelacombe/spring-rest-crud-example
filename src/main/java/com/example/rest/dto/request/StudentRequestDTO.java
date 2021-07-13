@@ -1,7 +1,9 @@
-package com.example.rest.dto;
+package com.example.rest.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
@@ -11,16 +13,9 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class StudentDTO {
-
-    public interface CreateStudentGroup {
-    }
-
-    private String id;
+public class StudentRequestDTO {
 
     @NotEmpty(message = "{NotEmpty.name}")
     private String name;
@@ -29,14 +24,11 @@ public class StudentDTO {
     @NotEmpty(message = "{NotEmpty.email}")
     private String email;
 
-    @NotEmpty(message = "{NotEmpty.password}", groups = CreateStudentGroup.class)
-    private String password;
-
     @NotNull(message = "{NotNull.birthday}")
     private LocalDate birthday;
 
     @Valid
     @NotNull(message = "{NotNull.address}")
-    private AddressDTO address;
+    private AddressRequestDTO address;
 
 }
