@@ -1,4 +1,4 @@
-# Spring Rest API CRUD example
+# Spring REST API CRUD example
 This project is an implementation of a basic CRUD using RESTful principles.
 
 ## About
