@@ -22,7 +22,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Bean
     public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        var messageSource = new ReloadableResourceBundleMessageSource();
+
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setBasename("classpath:messages");
 
@@ -31,7 +32,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public Validator getValidator() {
-        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+        var bean = new LocalValidatorFactoryBean();
+
         bean.setValidationMessageSource(messageSource());
 
         return bean;
