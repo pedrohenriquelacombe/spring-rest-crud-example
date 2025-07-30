@@ -1,0 +1,14 @@
+# Configuração comum a todos os perfis
+spring.datasource.username=root
+spring.datasource.password=root
+
+# Configuração específica para o perfil "docker"
+---
+spring.config.activate.on-profile=docker
+spring.datasource.url=jdbc:postgresql://postgres:5432/crud_example
+
+# Configuração específica para o perfil "default"
+---
+spring.config.activate.on-profile=default
+spring.datasource.url=jdbc:postgresql://localhost:5432/crud_example
+
