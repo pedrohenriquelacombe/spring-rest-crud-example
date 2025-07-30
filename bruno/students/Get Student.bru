@@ -1,0 +1,11 @@
+meta {
+  name: Get Student
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{HOST}}/students/{{STUDENT_ID}}
+  body: none
+  auth: inherit
+}

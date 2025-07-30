@@ -1,0 +1,24 @@
+meta {
+  name: Update Student Address
+  type: http
+  seq: 1
+}
+
+patch {
+  url: {{HOST}}/students/{{STUDENT_ID}}/addresses
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "zipCode": "20270003",
+    "street": "New Student Street Updated",
+    "number": "111",
+    "complement": "222",
+    "district": "Tijuca",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "country": "BR"
+  }
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Create Student
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{HOST}}/students
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "New Student",
+    "email": "new_student@gmail.com",
+    "birthday": "1992-08-28",
+    "address": {
+      "zipCode": "20270003",
+      "street": "Student Street",
+      "number": "111",
+      "complement": "222",
+      "district": "Tijuca",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    }
+  }
+}
+
+vars:post-response {
+  STUDENT_ID: res.body.id
+}

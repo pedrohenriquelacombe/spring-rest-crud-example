@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "spring-rest-crud-example",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

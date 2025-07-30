@@ -1,0 +1,29 @@
+meta {
+  name: Update Student
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{HOST}}/students/{{STUDENT_ID}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "New Student Updated",
+    "email": "new_student@gmail.com",
+    "birthday": "1992-08-28",
+    "address": {
+      "zipCode": "20270003",
+      "street": "Student Street",
+      "number": "111",
+      "complement": "222",
+      "district": "Tijuca",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    }
+  }
+}
