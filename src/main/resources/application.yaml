@@ -1,14 +1,22 @@
-# Configuração comum a todos os perfis
-spring.datasource.username=root
-spring.datasource.password=root
+spring:
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: create
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: org.postgresql.Driver
 
-# Configuração específica para o perfil "docker"
 ---
-spring.config.activate.on-profile=docker
-spring.datasource.url=jdbc:postgresql://postgres:5432/crud_example
 
-# Configuração específica para o perfil "default"
+spring:
+  config.activate.on-profile: docker
+  datasource.url: jdbc:postgresql://postgres:5432/crud_example
+
 ---
-spring.config.activate.on-profile=default
-spring.datasource.url=jdbc:postgresql://localhost:5432/crud_example
 
+spring:
+  config.activate.on-profile: default
+  jpa.show-sql: true
+  datasource.url: {DB_URL:jdbc:postgresql://localhost:5432/crud_example}
