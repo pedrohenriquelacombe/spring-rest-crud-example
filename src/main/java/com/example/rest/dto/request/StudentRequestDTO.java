@@ -1,6 +1,5 @@
 package com.example.rest.dto.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +13,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class StudentRequestDTO {
 
     @NotEmpty(message = "{NotEmpty.name}")

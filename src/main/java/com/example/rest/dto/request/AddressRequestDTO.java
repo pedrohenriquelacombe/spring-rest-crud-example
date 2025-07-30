@@ -1,14 +1,14 @@
 package com.example.rest.dto.request;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class AddressRequestDTO {
 
     @NotEmpty(message = "{NotEmpty.zipCode}")
