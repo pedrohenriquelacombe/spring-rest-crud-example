@@ -4,6 +4,7 @@ import com.example.rest.dto.response.StudentResponseDTO;
 import com.example.rest.entity.Student;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.util.ObjectUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +13,11 @@ import java.util.stream.Collectors;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class StudentMapper {
 
-    public static StudentResponseDTO getInstance(Student student) {
+    public static StudentResponseDTO toResponse(Student student) {
+        if (ObjectUtils.isEmpty(student)) {
+            return null;
+        }
+
         StudentResponseDTO dto = StudentResponseDTO.builder()
                 .id(student.getId())
                 .name(student.getName())
@@ -21,14 +26,14 @@ public final class StudentMapper {
                 .build();
 
         Optional.ofNullable(student.getAddress()).ifPresent(address -> {
-            dto.setAddress(AddressMapper.getInstance(address));
+            dto.setAddress(AddressMapper.toResponse(address));
         });
 
         return dto;
     }
 
-    public static List<StudentResponseDTO> getInstance(List<Student> students) {
-        return students.stream().map(StudentMapper::getInstance).collect(Collectors.toList());
+    public static List<StudentResponseDTO> toResponseList(List<Student> students) {
+        return students.stream().map(StudentMapper::toResponse).collect(Collectors.toList());
     }
 
 }

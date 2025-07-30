@@ -25,25 +25,25 @@ public class StudentResource {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<StudentResponseDTO> students() {
-        return StudentMapper.getInstance(this.studentRepository.findAll());
+        return StudentMapper.toResponseList(this.studentRepository.findAll());
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public StudentResponseDTO create(@Valid @RequestDTO(StudentRequestDTO.class) Student student) {
-        return StudentMapper.getInstance(this.studentService.save(student));
+        return StudentMapper.toResponse(this.studentService.save(student));
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public StudentResponseDTO search(@PathVariable String id) {
-        return StudentMapper.getInstance(this.studentService.findById(id));
+        return StudentMapper.toResponse(this.studentService.findById(id));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public StudentResponseDTO update(@PathVariable String id, @Valid @RequestDTO(StudentRequestDTO.class) Student student) {
-        return StudentMapper.getInstance(this.studentService.update(id, student));
+        return StudentMapper.toResponse(this.studentService.update(id, student));
     }
 
     @DeleteMapping("/{id}")

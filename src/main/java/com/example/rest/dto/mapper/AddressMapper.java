@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AddressMapper {
 
-    public static AddressResponseDTO getInstance(Address address) {
+    public static AddressResponseDTO toResponse(Address address) {
         return AddressResponseDTO.builder()
                 .id(address.getId())
                 .zipCode(address.getZipCode())

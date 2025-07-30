@@ -22,7 +22,7 @@ public class AddressResource {
     @PatchMapping("/students/{id}/addresses")
     @ResponseStatus(HttpStatus.OK)
     public AddressResponseDTO update(@PathVariable String id, @Valid @RequestDTO(AddressRequestDTO.class) Address address) {
-        return AddressMapper.getInstance(this.addressService.update(id, address));
+        return AddressMapper.toResponse(this.addressService.update(id, address));
     }
 
 }
