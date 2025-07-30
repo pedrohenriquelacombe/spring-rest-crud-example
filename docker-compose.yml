@@ -1,0 +1,33 @@
+version: "3.0"
+
+services:
+  spring-rest-crud:
+    build: .
+    image: spring-rest-crud-service
+    container_name: spring-rest-crud-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+    networks:
+      - crud-example-network
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_DB: crud_example
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    tty: true
+    ports:
+      - "5432:5432"
+    networks:
+      - crud-example-network
+
+networks:
+  crud-example-network:
+    driver: bridge
