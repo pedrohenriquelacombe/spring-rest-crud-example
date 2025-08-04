@@ -12,17 +12,16 @@ post {
 
 body:json {
   {
-    "name": "New Student",
-    "email": "new_student@gmail.com",
-    "birthday": "1992-08-28",
+    "name": "{{NAME}}",
+    "email": "{{EMAIL}}",
+    "birthday": "{{$randomDatePast}}"  ,
     "address": {
-      "zipCode": "20270003",
-      "street": "Student Street",
-      "number": "111",
-      "complement": "222",
-      "district": "Tijuca",
-      "city": "Rio de Janeiro",
-      "state": "RJ",
+      "zipCode": "04538132",
+      "street": "Avenida Brigadeiro Faria Lima",
+      "number": "{{$randomInt}}",
+      "district": "Pinheiros",
+      "city": "São Paulo",
+      "state": "SP",
       "country": "BR"
     }
   }
@@ -30,4 +29,15 @@ body:json {
 
 vars:post-response {
   STUDENT_ID: res.body.id
+}
+
+script:pre-request {
+  const firstName = bru.interpolate("{{$randomFirstName}}");
+  const lastName = bru.interpolate("{{$randomLastName}}");
+  const fullName = `${firstName} ${lastName}`;
+  const emailPrefix = fullName.replaceAll(" ","_");
+  const email = `${emailPrefix.toLowerCase()}@gmail.com`;
+  
+  bru.setVar("NAME", fullName);
+  bru.setVar("EMAIL", email);
 }
