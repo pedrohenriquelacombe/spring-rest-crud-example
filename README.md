@@ -57,7 +57,7 @@ demonstrates how to structure a clean API using DTOs, exception handling, and au
 Start the full application stack with Docker Compose:
 
 ```bash
-   docker compose up db -d
+   docker compose up -d
 ```
 
 ## API Testing
