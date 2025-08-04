@@ -7,11 +7,11 @@ import com.example.rest.dto.response.StudentResponseDTO;
 import com.example.rest.entity.Student;
 import com.example.rest.repository.StudentRepository;
 import com.example.rest.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
