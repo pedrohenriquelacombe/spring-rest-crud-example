@@ -7,6 +7,7 @@ services:
     container_name: spring-rest-crud-service
     environment:
       SPRING_PROFILES_ACTIVE: docker
+      DB_URL: jdbc:postgresql://postgres:5432/crud_example
     ports:
       - "8080:8080"
     networks:
