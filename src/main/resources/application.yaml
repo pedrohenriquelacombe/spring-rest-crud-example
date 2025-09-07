@@ -1,29 +1,21 @@
 spring:
-  jpa:
-    show-sql: false
-    hibernate:
-      ddl-auto: create
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    username: ${DB_USER:root}
-    password: ${DB_PASSWORD:root}
-
----
-
-spring:
   config:
     activate:
       on-profile: docker
+  jpa:
+    show-sql: false
   datasource:
     url: jdbc:postgresql://postgres:5432/crud_example
 
 ---
 
 spring:
-  config:
-    activate:
-      on-profile: default
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: create
+      dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:root}
     url: ${DB_URL:jdbc:postgresql://localhost:5432/crud_example}
